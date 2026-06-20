@@ -52,19 +52,33 @@ Termux QianQiu Assistant 是一个面向 Android 平台的超级 AI Agent 应用
 
 ## 本地构建
 
-在已经准备好 Android SDK 的环境中执行：
+要求：
+
+- `JDK 17`
+- Android SDK
+- 已安装 `platform-tools`
+- 已安装 `platforms;android-34`
+- 已安装 `build-tools;34.0.0`
+
+推荐直接使用仓库自带 Wrapper 构建：
 
 ```bash
 export JAVA_HOME=/path/to/jdk17
 export ANDROID_SDK_ROOT=/path/to/android-sdk
 export ANDROID_HOME=/path/to/android-sdk
-gradle --no-daemon assembleDebug
+./gradlew --no-daemon assembleDebug
 ```
 
 如果网络环境要求代理，可额外设置：
 
 ```bash
 export JAVA_TOOL_OPTIONS='-Dhttp.proxyHost=127.0.0.1 -Dhttp.proxyPort=18080 -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=18080'
+```
+
+构建成功后 APK 位于：
+
+```text
+app/build/outputs/apk/debug/app-debug.apk
 ```
 
 ## 后续阶段
