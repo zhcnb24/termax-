@@ -1,9 +1,8 @@
 buildscript {
     repositories {
-        google()
-        mavenCentral()
         maven(url = "https://maven.aliyun.com/repository/google")
         maven(url = "https://maven.aliyun.com/repository/public")
+        mavenCentral()
     }
     dependencies {
         classpath("com.android.tools.build:gradle:8.5.2")
