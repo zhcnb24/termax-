@@ -89,3 +89,27 @@ app/build/outputs/apk/debug/app-debug.apk
 - 第六阶段：生态版
 
 详细架构见 `docs/architecture.md`，第二阶段路线见 `docs/phase2-roadmap.md`。
+
+## 文档与规则
+
+为了保证项目后续开发“有迹可循”，仓库已新增文档体系：
+
+- `docs/README.md`
+  - 文档总览
+- `docs/product/product-charter.md`
+  - 产品总纲
+- `docs/rules/`
+  - 项目规则、AI 执行规则、安全规则、更新规则
+- `docs/context/ai-retrieval-index.md`
+  - 给 AI 检索使用的统一入口
+- `docs/releases/`
+  - 每次版本的更新说明、风险、改动文件索引
+- `docs/adr/`
+  - 架构决策记录目录
+
+后续每次更新都应尽量同步补充：
+
+- 更新了什么
+- 还差什么
+- 建议什么
+- 可能会发生什么
