@@ -1,17 +1,54 @@
 # Termux千秋辅助
 
-Termux QianQiu Assistant 是一个面向 Android 平台的超级 AI Agent 应用原型，定位为以 Termux 为执行核心的移动端智能开发平台。
+Termux QianQiu Assistant 是一个面向 Android 平台的超级 AI Agent 应用，定位为以 Termux 为执行核心的移动端智能开发平台。
+
+当前仓库已经从“纯展示原型”推进到“第二阶段最小可用版雏形”。
 
 ## 当前交付
 
-- Android 原型客户端源码
-- 可安装 Debug APK
-- 首版产品原型界面
-- 架构设计文档
+- Android 客户端源码
+- 第二阶段 MVP 界面与状态流
+- 可配置 OpenAI 兼容对话接口
+- Termux / Termux API / Shizuku 环境检测
+- Shell 命令执行与错误输出展示
+- 应用工作区文件创建 / 编辑 / 删除
+- SQLite 本地持久化消息、任务、日志、配置
+- 架构设计文档与阶段说明文档
 
-## APK 产物
+## 第二阶段已落地能力
 
-- `app/build/outputs/apk/debug/app-debug.apk`
+- `AI 聊天`
+  - 支持配置 OpenAI 兼容 `Base URL`、`API Key`、`Model`
+  - 当未配置接口或接口不可用时，自动使用离线回退回复
+- `任务中心`
+  - 所有聊天、命令、文件操作都会生成真实任务记录
+  - 支持状态、进度、步骤、重试次数、日志展示
+- `Termux 检测`
+  - 检测 `com.termux`
+  - 检测 `com.termux.api`
+  - 检测 `moe.shizuku.privileged.api`
+- `命令执行`
+  - 通过 `sh -c` 执行基础 Shell 命令
+  - 展示 `stdout`、`stderr`、退出码、耗时
+  - 失败时自动进行基础重试
+- `文件操作`
+  - 在应用私有工作区内创建、覆盖、删除文件
+  - 支持工作区文件列表回填编辑
+- `本地存储`
+  - 本地 SQLite 保存消息、任务、日志和 AI 配置
+
+## 页面结构
+
+- `首页`
+  - 实时总览、阶段能力、执行环境状态
+- `AI聊天`
+  - 接口配置、消息流、发送入口
+- `工作台`
+  - 环境检测、命令执行、文件工作区
+- `任务中心`
+  - 任务列表、最近日志
+- `我的`
+  - 当前持久化能力和下一阶段目标
 
 ## 本地构建
 
@@ -30,13 +67,11 @@ gradle --no-daemon assembleDebug
 export JAVA_TOOL_OPTIONS='-Dhttp.proxyHost=127.0.0.1 -Dhttp.proxyPort=18080 -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=18080'
 ```
 
-## 当前原型范围
+## 后续阶段
 
-当前版本优先完成了：
+- 第三阶段：Agent 执行版
+- 第四阶段：Termux 深度集成版
+- 第五阶段：智能增强版
+- 第六阶段：生态版
 
-- 深色风格移动端主框架
-- 首页 / AI聊天 / 工作台 / 任务中心 / 个人中心
-- 产品愿景与核心模块展示
-- 为后续 Agent、记忆、插件、知识库扩展预留清晰架构入口
-
-更完整的工业级设计说明见 `docs/architecture.md`。
+详细架构见 `docs/architecture.md`，第二阶段路线见 `docs/phase2-roadmap.md`。
